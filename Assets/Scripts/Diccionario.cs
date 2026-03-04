@@ -1,15 +1,21 @@
 using UnityEngine;
-
+using TMPro;
+using System.Collections;
 public class Diccionario : MonoBehaviour
 {
     public TextAsset dic;
     public string[] arregloDic;
     public string palabraActual;
     public string letra;
+    public TextMeshProUGUI textoUi;
+    public GameObject wrong;
+    public bool iswrong;
 
     void Start()
     {
         arregloDic = dic.text.Split(new char[] { ' ' });
+        wrong.SetActive(false);
+        iswrong = false;
     }
 
     // Update is called once per frame
@@ -21,12 +27,14 @@ public class Diccionario : MonoBehaviour
             {
                 palabraActual = palabraActual.Substring(1);
             }
-            else
+            else if (iswrong == false)
             {
-                print("ERROR");
+                StartCoroutine("Malo");
             }
                 
         }
+        textoUi.text = palabraActual;
+
     }
     public void AsignarPalabra(int cual)
     {
@@ -52,5 +60,13 @@ public class Diccionario : MonoBehaviour
         }
 
         return null;
+    }
+    public IEnumerator Malo()
+    {
+        wrong.SetActive(true);
+        iswrong = true;
+        yield return new WaitForSeconds(1f);
+        wrong.SetActive(false);
+        iswrong = false;
     }
 }
