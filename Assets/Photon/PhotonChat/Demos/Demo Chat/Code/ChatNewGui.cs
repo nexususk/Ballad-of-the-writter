@@ -45,6 +45,7 @@ namespace Photon.Chat.DemoChat
         public Text CurrentChannelText;           // set in inspector
         public Toggle ChannelToggleToInstantiate; // set in inspector
 
+        private List<string> mensajesRecibidos = new List<string>();
 
         public GameObject FriendListUiItemtoInstantiate;
 
@@ -537,6 +538,18 @@ namespace Photon.Chat.DemoChat
 
         public void OnGetMessages(string channelName, string[] senders, object[] messages)
         {
+            for (int i = 0; i < messages.Length; i++)
+            {
+                string sender = senders[i];
+                string msg = messages[i].ToString(); // convertir a string
+
+                string mensajeFinal = sender + ": " + msg;
+
+                mensajesRecibidos.Add(mensajeFinal);
+
+                Debug.Log("Guardado: " + mensajeFinal);
+            }
+
             if (channelName.Equals(this.selectedChannelName))
             {
                 // update text
@@ -593,6 +606,8 @@ namespace Photon.Chat.DemoChat
 
         public void OnReceiveBroadcastMessage(string channel, byte[] message)
         {
+            
+
         }
 
         public void AddMessageToSelectedChannel(string msg, int msgId)
