@@ -1307,6 +1307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2063183212}
   - component: {fileID: 2063183211}
+  - component: {fileID: 2063183213}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1333,6 +1334,12 @@ MonoBehaviour:
   textoUi: {fileID: 403605734}
   wrong: {fileID: 801335091}
   iswrong: 0
+  tempo: 0
+  estado: 0
+  error: 0
+  tamPalabra: 0
+  puntaje: 0
+  pFinal: 0
 --- !u!4 &2063183212
 Transform:
   m_ObjectHideFlags: 0
@@ -1348,6 +1355,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2063183213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063183210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08fc17dfaa1fb6d458915ef439bf057c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  puntaje1: 
+  puntaje2: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
