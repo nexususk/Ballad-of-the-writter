@@ -58,6 +58,10 @@ namespace Photon.Chat.DemoChat
         public Text StateText;  // set in inspector
         public Text UserIdText; // set in inspector
 
+        public delegate void Escuchador(string msj);
+
+        public static Escuchador onMessage;
+
         // private static string WelcomeText = "Welcome to chat. Type \\help to list commands.";
         private static string HelpText = "\n    -- HELP --\n" +
                                          "To subscribe to channel(s):\n" +
@@ -543,11 +547,13 @@ namespace Photon.Chat.DemoChat
                 string sender = senders[i];
                 string msg = messages[i].ToString(); // convertir a string
 
-                string mensajeFinal = sender + ": " + msg;
+                string mensajeFinal = sender + "|" + msg;
 
                 mensajesRecibidos.Add(mensajeFinal);
 
                 Debug.Log("Guardado: " + mensajeFinal);
+
+                onMessage?.Invoke(mensajeFinal);
             }
 
             if (channelName.Equals(this.selectedChannelName))
