@@ -2,8 +2,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool jugadorListo1;
+    public bool jugadorListo2;
+
     public string puntaje1;
     public string puntaje2;
+
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         
@@ -13,6 +23,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AlistarJugador(int cual)
+    {
+        jugadorListo1 = jugadorListo1 || cual == 1;
+        jugadorListo2 = jugadorListo2 || cual == 2;
     }
     [ContextMenu("Iniciar comparacion")]
     public void CompararTest()

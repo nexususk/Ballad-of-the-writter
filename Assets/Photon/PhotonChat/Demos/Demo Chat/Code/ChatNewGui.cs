@@ -415,6 +415,7 @@ namespace Photon.Chat.DemoChat
 
 
             this.chatClient.SetOnlineStatus(ChatUserStatus.Online); // You can set your online state (without a mesage).
+
         }
 
         public void OnDisconnected()
@@ -468,6 +469,7 @@ namespace Photon.Chat.DemoChat
 
             // Switch to the first newly created channel
             ShowChannel(channels[0]);
+            
         }
 
         private void InstantiateChannelButton(string channelName)

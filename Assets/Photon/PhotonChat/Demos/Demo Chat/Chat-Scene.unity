@@ -415,6 +415,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1902311496}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AlistarJugador
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &96068294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +561,7 @@ MonoBehaviour:
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1902311492}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: OnEnterSend
         m_Mode: 1
@@ -2102,7 +2114,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1902311492}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: PostHelpToCurrentChannel
         m_Mode: 1
@@ -2330,8 +2342,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1902311492}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 1902311495}
+        m_TargetAssemblyTypeName: Photon.Chat.DemoChat.ChatNewGui, Assembly-CSharp
         m_MethodName: OnClickSend
         m_Mode: 1
         m_Arguments:
@@ -4230,7 +4242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1392248764
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5006,7 +5018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1651046375
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5147,7 +5159,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1902311492}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: OpenDashboard
         m_Mode: 1
@@ -5334,7 +5346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1855205336
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5398,7 +5410,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1902311492}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: OpenChatDocs
         m_Mode: 1
@@ -5597,8 +5609,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1902311494}
-  - component: {fileID: 1902311492}
   - component: {fileID: 1902311493}
+  - component: {fileID: 1902311495}
+  - component: {fileID: 1902311496}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -5606,38 +5619,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1902311492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902311491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8626678ad1db422409a1803edb7f6d72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChannelsToJoinOnConnect:
-  - Region
-  - Guild
-  FriendsList:
-  - Joe
-  - Jane
-  - Bob
-  HistoryLengthToFetch: 0
-  ConnectingLabel: {fileID: 1422312615}
-  ChatPanel: {fileID: 1846443113}
-  UserIdFormPanel: {fileID: 2007112338}
-  InputFieldChat: {fileID: 119356077}
-  CurrentChannelText: {fileID: 1012646458}
-  ChannelToggleToInstantiate: {fileID: 944183608}
-  FriendListUiItemtoInstantiate: {fileID: 1944344281}
-  ShowState: 1
-  Title: {fileID: 1929124099}
-  StateText: {fileID: 984323304}
-  UserIdText: {fileID: 326741063}
-  TestLength: 2048
 --- !u!114 &1902311493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5650,7 +5631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e77b98bc3c7be4d838fbfe21004ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatNewComponent: {fileID: 1902311492}
+  chatNewComponent: {fileID: 1902311495}
   idInput: {fileID: 504368358}
 --- !u!4 &1902311494
 Transform:
@@ -5667,6 +5648,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902311495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902311491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1081962e3e36bde418cb31cb81130426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Photon.Chat.DemoChat.ChatNewGui
+  ChannelsToJoinOnConnect:
+  - Meow
+  FriendsList:
+  - Joe
+  - Jane
+  HistoryLengthToFetch: 20
+  ConnectingLabel: {fileID: 1422312615}
+  ChatPanel: {fileID: 1846443113}
+  UserIdFormPanel: {fileID: 2007112338}
+  InputFieldChat: {fileID: 504368358}
+  CurrentChannelText: {fileID: 1012646458}
+  ChannelToggleToInstantiate: {fileID: 944183608}
+  FriendListUiItemtoInstantiate: {fileID: 1944344281}
+  ShowState: 1
+  Title: {fileID: 1929124099}
+  StateText: {fileID: 984323304}
+  UserIdText: {fileID: 326741063}
+  TestLength: 2048
+--- !u!114 &1902311496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902311491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08fc17dfaa1fb6d458915ef439bf057c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  jugadorListo1: 0
+  jugadorListo2: 0
+  puntaje1: 
+  puntaje2: 
 --- !u!1 &1924785562
 GameObject:
   m_ObjectHideFlags: 0
