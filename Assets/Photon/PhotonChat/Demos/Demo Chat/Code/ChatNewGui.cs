@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,7 +46,7 @@ namespace Photon.Chat.DemoChat
         public Text CurrentChannelText;           // set in inspector
         public Toggle ChannelToggleToInstantiate; // set in inspector
 
-        private List<string> mensajesRecibidos = new List<string>();
+        public List<string> mensajesRecibidos = new List<string>();
 
         public GameObject FriendListUiItemtoInstantiate;
 
@@ -436,7 +437,7 @@ namespace Photon.Chat.DemoChat
             // in this demo, we simply send a message into each channel. This is NOT a must have!
             foreach (string channel in channels)
             {
-                this.chatClient.PublishMessage(channel, "says 'hi'."); // you don't HAVE to send a msg on join but you could.
+                this.chatClient.PublishMessage(channel, "2"); // you don't HAVE to send a msg on join but you could.
 
                 if (this.ChannelToggleToInstantiate != null)
                 {
@@ -552,6 +553,8 @@ namespace Photon.Chat.DemoChat
                 string mensajeFinal = sender + "|" + msg;
 
                 mensajesRecibidos.Add(mensajeFinal);
+                GameManager.instance.RecibirMensajes(mensajesRecibidos.ToArray());
+                GameManager.instance.ProcesarMensaje(mensajeFinal);
 
                 Debug.Log("Guardado: " + mensajeFinal);
 
