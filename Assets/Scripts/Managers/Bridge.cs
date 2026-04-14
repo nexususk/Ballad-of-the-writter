@@ -5,7 +5,6 @@ public class Bridge : MonoBehaviour
 {
     public string[] mensaje;
     public PalabraPonderada p;
-    public bool palabraLista = false;
     public Diccionario diccionario;
 
     public PalabraPonderada p1;
@@ -17,7 +16,7 @@ public class Bridge : MonoBehaviour
     
     void Start()
     {
-        ChatNewGui.onMessage += Mensajero;
+        //ChatNewGui.onMessage += Mensajero;
         p.Ponderar();
         print(JsonUtility.ToJson(p));
     }
@@ -72,6 +71,8 @@ public class Bridge : MonoBehaviour
     {
         diccionario.ReiniciarJuego();
         datoObtenido = 0;
+        p1 = null;
+        p2 = null;
     }
 
     public void Comparar(string error)
@@ -93,9 +94,7 @@ public class Bridge : MonoBehaviour
             {
                 p = p2;
             }
-            p1 = null;
-            p2 = null;
-            palabraLista = true;
+            GameManager.instance.palabraLista = true;
             diccionario.AsignarPalabra(p.palabra);
         }
 

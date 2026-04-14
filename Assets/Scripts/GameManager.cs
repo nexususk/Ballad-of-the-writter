@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public bool palabraLista;
     public bool enviePalabraEscrita;
     public bool puntajesComparados;
     public void EnviarPalabraEscrita(string cual)
@@ -153,10 +154,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => jugadorListo1 && jugadorListo2);
         yield return new WaitForSeconds(5f);
         Debug.LogWarning("Preparate para morir");
-        bridge.palabraLista = false;
+        palabraLista = false;
         PalabraPonderada p = bridge.ObtenerPalabra();
         chatGui.chatClient.PublishMessage("Meow", "1|" + JsonUtility.ToJson(p));
-        yield return new WaitUntil(() =>bridge.palabraLista);
+        yield return new WaitUntil(() =>palabraLista);
         bridge.Reiniciar();
         enviePalabraEscrita=false;
         yield return new WaitUntil(() => enviePalabraEscrita);

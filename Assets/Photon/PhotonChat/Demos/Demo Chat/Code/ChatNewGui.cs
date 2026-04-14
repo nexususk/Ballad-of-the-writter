@@ -555,8 +555,9 @@ namespace Photon.Chat.DemoChat
                 mensajesRecibidos.Add(mensajeFinal);
                 GameManager.instance.RecibirMensajes(mensajesRecibidos.ToArray());
                 GameManager.instance.ProcesarMensaje(mensajeFinal);
+                GameManager.instance.bridge.Mensajero(mensajeFinal);
 
-                Debug.Log("Guardado: " + mensajeFinal);
+                //Debug.Log("Guardado: " + mensajeFinal);
 
                 onMessage?.Invoke(mensajeFinal);
             }
