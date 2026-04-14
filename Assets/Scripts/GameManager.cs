@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     {
         if(miPuntaje.error == 0 && datoEnemigo.error == 0) 
         {
-            if(miPuntaje.tiempo >= datoEnemigo.tiempo)
+            if(miPuntaje.tiempo <= datoEnemigo.tiempo)
             {
                 Ganar();
             }
@@ -140,14 +140,30 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public bool enviePalabraEscrita;
+    public bool puntajesComparados;
+    public void EnviarPalabraEscrita(string cual)
+    {
+        chatGui.chatClient.PublishMessage("Meow", "2|" + cual);
+        enviePalabraEscrita = true;
+    }
 
     IEnumerator FlujoDeJuego()
     {
         yield return new WaitUntil(() => jugadorListo1 && jugadorListo2);
         yield return new WaitForSeconds(5f);
         Debug.LogWarning("Preparate para morir");
+        bridge.palabraLista = false;
         PalabraPonderada p = bridge.ObtenerPalabra();
-        chatGui.chatClient.PublishMessage("Meow", chatGui.UserName + "|1|" + JsonUtility.ToJson(p));
+        chatGui.chatClient.PublishMessage("Meow", "1|" + JsonUtility.ToJson(p));
+        yield return new WaitUntil(() =>bridge.palabraLista);
+        bridge.Reiniciar();
+        enviePalabraEscrita=false;
+        yield return new WaitUntil(() => enviePalabraEscrita);
+        puntajesComparados=false;
+        yield return new WaitUntil(() => puntajesComparados);
+
+
 
     }
 }

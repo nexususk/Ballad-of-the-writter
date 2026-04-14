@@ -5,8 +5,16 @@ public class Bridge : MonoBehaviour
 {
     public string[] mensaje;
     public PalabraPonderada p;
+    public bool palabraLista = false;
     public Diccionario diccionario;
 
+    public PalabraPonderada p1;
+    public PalabraPonderada p2;
+
+    DatosPuntaje miPuntaje;
+    DatosPuntaje datoEnemigo;
+    int datoObtenido = 0;
+    
     void Start()
     {
         ChatNewGui.onMessage += Mensajero;
@@ -26,6 +34,9 @@ public class Bridge : MonoBehaviour
                 case "1":
                     Comparar(mensaje[2]);
                     break;
+                case "2":
+                    LlegoPalabraPuntaje(mensaje[2], mensaje[0]);
+                    break;
                 default:
                     break;
             }
@@ -37,10 +48,57 @@ public class Bridge : MonoBehaviour
         p = JsonUtility.FromJson<PalabraPonderada>(palabra);
         print("La palabra asignada es: " +  p.palabra);
     }
+    public void LlegoPalabraPuntaje(string palabra, string nombre)
+    {
+        DatosPuntaje dp = JsonUtility.FromJson<DatosPuntaje>(palabra);
+        if(nombre == GameManager.instance.chatGui.UserName)
+        {
+            miPuntaje = dp;
+        }
+        else
+        {
+            datoEnemigo = dp;
+        }
+        datoObtenido++;
+        if(datoObtenido > 1 )
+        {
+            GameManager.instance.Comparar(miPuntaje, datoEnemigo);
+            GameManager.instance.puntajesComparados = true;
+        }
+        
+    }
+
+    public void Reiniciar()
+    {
+        diccionario.ReiniciarJuego();
+        datoObtenido = 0;
+    }
 
     public void Comparar(string error)
     {
-        print("El mensaje de error que llego es: " + error);
+        if(p1 == null) 
+        {
+            p1 = JsonUtility.FromJson<PalabraPonderada>(error);
+
+        }
+        else
+        {
+            p2 = JsonUtility.FromJson<PalabraPonderada>(error);
+
+            if (p1.valor > p2.valor)
+            {
+                p = p1;
+            }
+            else
+            {
+                p = p2;
+            }
+            p1 = null;
+            p2 = null;
+            palabraLista = true;
+            diccionario.AsignarPalabra(p.palabra);
+        }
+
     }
 
     public PalabraPonderada ObtenerPalabra()

@@ -60,11 +60,20 @@ public class Diccionario : MonoBehaviour
         palabraActual = arregloDic[cual];
 
     }
+    public void AsignarPalabra(string cual)
+    {
+        palabraActual = cual;
 
+    }
     [ContextMenu("Generar palabra al azar")]
     public void ElegirPalabraAzar()
     {
         AsignarPalabra(Random.Range(0,arregloDic.Length));
+    }
+
+    public void ReiniciarJuego()
+    {
+        
         estado = Estado.juego;
         tempo = 0;
         error = 0;
@@ -101,7 +110,7 @@ public class Diccionario : MonoBehaviour
         datosPuntaje.puntaje = puntaje;
         datosPuntaje.error = error;
         datosPuntaje.tiempo = tempo;
-        Debug.Log(JsonUtility.ToJson(datosPuntaje));
+        GameManager.instance.EnviarPalabraEscrita(JsonUtility.ToJson(datosPuntaje));
 
     }
 
