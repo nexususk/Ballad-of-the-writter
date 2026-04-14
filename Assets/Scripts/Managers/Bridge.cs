@@ -71,16 +71,14 @@ public class Bridge : MonoBehaviour
     {
         diccionario.ReiniciarJuego();
         datoObtenido = 0;
-        p1 = null;
-        p2 = null;
     }
 
     public void Comparar(string error)
     {
-        if(p1 == null) 
+        if(p1 == null || p1.valor <10) 
         {
             p1 = JsonUtility.FromJson<PalabraPonderada>(error);
-
+            Debug.LogWarning(error);
         }
         else
         {
