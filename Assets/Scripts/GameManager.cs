@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public string[] mensajes;
     public GameObject canvasChat;
     public GameObject canvasProp;
+    public Bridge bridge;
 
 
     public static GameManager instance;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(Valores());
+        StartCoroutine (FlujoDeJuego());
     }
 
     // Update is called once per frame
@@ -41,7 +43,12 @@ public class GameManager : MonoBehaviour
 
     public void ProcesarMensaje(string q)
     {
+        print (q);
+
         string[] msj = q.Split('|');
+        print(msj);
+        print(chatGui);
+        print (chatGui.UserName);
         if(msj.Length > 1 && msj[1] == "2")
         {
             if (msj[0] == chatGui.UserName)
@@ -132,5 +139,15 @@ public class GameManager : MonoBehaviour
                // chatGui.chatClient.PublishMessage("Meow", chatGui.UserName);
             }
         }
+    }
+
+    IEnumerator FlujoDeJuego()
+    {
+        yield return new WaitUntil(() => jugadorListo1 && jugadorListo2);
+        yield return new WaitForSeconds(5f);
+        Debug.LogWarning("Preparate para morir");
+        PalabraPonderada p = bridge.ObtenerPalabra();
+        chatGui.chatClient.PublishMessage("Meow", chatGui.UserName + "|1|" + JsonUtility.ToJson(p));
+
     }
 }

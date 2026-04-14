@@ -5,6 +5,7 @@ public class Bridge : MonoBehaviour
 {
     public string[] mensaje;
     public PalabraPonderada p;
+    public Diccionario diccionario;
 
     void Start()
     {
@@ -40,6 +41,15 @@ public class Bridge : MonoBehaviour
     public void Comparar(string error)
     {
         print("El mensaje de error que llego es: " + error);
+    }
+
+    public PalabraPonderada ObtenerPalabra()
+    {
+        diccionario.ElegirPalabraAzar();
+        PalabraPonderada palabra = new PalabraPonderada();
+        palabra.palabra = diccionario.palabraActual;
+        palabra.Ponderar();
+        return palabra;
     }
 }
 
