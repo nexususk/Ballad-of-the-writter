@@ -1,13 +1,8 @@
-using NUnit.Framework;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool jugadorListo1;
-    public bool jugadorListo2;
-
     public string puntaje1;
     public string puntaje2;
     public Photon.Chat.DemoChat.ChatNewGui chatGui;
@@ -17,6 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject canvasProp;
     public Bridge bridge;
 
+    [SerializeField]
+    int victorias;
+
+    [SerializeField]
+    int derrotas;
 
     public static GameManager instance;
 
@@ -123,10 +123,12 @@ public class GameManager : MonoBehaviour
     public void Ganar()
     {
         print("Ganaste!");
+        victorias++;
     }
     public void Perder()
     {
         print("Perdiste");
+        derrotas++;
     }
 
     IEnumerator Valores()
@@ -140,6 +142,10 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public bool jugadorListo1;
+    public bool jugadorListo2;
+
     public bool palabraLista;
     public bool enviePalabraEscrita;
     public bool puntajesComparados;
@@ -152,19 +158,31 @@ public class GameManager : MonoBehaviour
     IEnumerator FlujoDeJuego()
     {
         yield return new WaitUntil(() => jugadorListo1 && jugadorListo2);
-        yield return new WaitForSeconds(5f);
-        Debug.LogWarning("Preparate para morir");
-        palabraLista = false;
-        PalabraPonderada p = bridge.ObtenerPalabra();
-        chatGui.chatClient.PublishMessage("Meow", "1|" + JsonUtility.ToJson(p));
-        yield return new WaitUntil(() =>palabraLista);
-        bridge.Reiniciar();
-        enviePalabraEscrita=false;
-        yield return new WaitUntil(() => enviePalabraEscrita);
-        puntajesComparados=false;
-        yield return new WaitUntil(() => puntajesComparados);
 
 
+        while (victorias < 3 && derrotas < 3)
+        {
+            yield return new WaitForSeconds(5f);
+            Debug.LogWarning("Preparate para morir");
+            palabraLista = false;
+            PalabraPonderada p = bridge.ObtenerPalabra();
+            chatGui.chatClient.PublishMessage("Meow", "1|" + JsonUtility.ToJson(p));
+            yield return new WaitUntil(() => palabraLista);
+            bridge.Reiniciar();
+            enviePalabraEscrita = false;
+            yield return new WaitUntil(() => enviePalabraEscrita);
+            puntajesComparados = false;
+            yield return new WaitUntil(() => puntajesComparados);
+            yield return new WaitForSeconds(3);
+        }
 
+        if(victorias > 2)
+        {
+            Debug.LogError("Soy el gandor");
+        }
+        else
+        {
+            Debug.LogError("Perdi mi dignidad");
+        }
     }
 }
