@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     public GameObject canvasProp;
     public Bridge bridge;
 
+    public ParticleSystem particulasP;
+    public Animator animatorP;
+    public ParticleSystem particulasE;
+    public Animator animatorE;
+
+
     [SerializeField]
     int victorias;
 
@@ -19,6 +25,7 @@ public class GameManager : MonoBehaviour
     int derrotas;
 
     public static GameManager instance;
+
 
     private void Awake()
     {
@@ -28,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(Valores());
         StartCoroutine (FlujoDeJuego());
+
     }
 
     // Update is called once per frame
@@ -123,11 +131,17 @@ public class GameManager : MonoBehaviour
     public void Ganar()
     {
         print("Ganaste!");
+        particulasP.Play();
+        animatorP.SetTrigger("Drawing");
+        animatorE.SetTrigger("TookDamage");
         victorias++;
     }
     public void Perder()
     {
         print("Perdiste");
+        particulasE.Play();
+        animatorE.SetTrigger("Drawing");
+        animatorP.SetTrigger("TookDamage");
         derrotas++;
     }
 
