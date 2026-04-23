@@ -193,10 +193,14 @@ public class GameManager : MonoBehaviour
         if(victorias > 2)
         {
             Debug.LogError("Soy el gandor");
+            animatorP.SetTrigger("Victory");
+            animatorE.SetTrigger("Died");
         }
         else
         {
             Debug.LogError("Perdi mi dignidad");
+            animatorE.SetTrigger("Victory");
+            animatorP.SetTrigger("Died");
         }
     }
 }
