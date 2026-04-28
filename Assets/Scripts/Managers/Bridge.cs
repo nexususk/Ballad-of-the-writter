@@ -75,6 +75,10 @@ public class Bridge : MonoBehaviour
     {
         diccionario.ReiniciarJuego();
         datoObtenido = 0;
+        p1.valor = 0; 
+        p2.valor = 0;
+
+
     }
 
     public void Comparar(string error)
