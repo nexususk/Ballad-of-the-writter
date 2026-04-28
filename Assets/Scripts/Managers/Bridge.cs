@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Chat.DemoChat;
+using TMPro;
 
 public class Bridge : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class Bridge : MonoBehaviour
     DatosPuntaje miPuntaje;
     DatosPuntaje datoEnemigo;
     int datoObtenido = 0;
-    
+
+   
+ 
+
     void Start()
     {
         //ChatNewGui.onMessage += Mensajero;
@@ -88,12 +92,13 @@ public class Bridge : MonoBehaviour
             {
                 p = p1;
             }
-            else
+            else 
             {
                 p = p2;
             }
             GameManager.instance.palabraLista = true;
             diccionario.AsignarPalabra(p.palabra);
+            diccionario.MostrarPalabra();
         }
 
     }

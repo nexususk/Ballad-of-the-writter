@@ -17,6 +17,7 @@ public class Diccionario : MonoBehaviour
     public int              tamPalabra;
     public float            puntaje;
     public float            pFinal;
+    public Bridge           bridge;
     
 
    
@@ -35,6 +36,7 @@ public class Diccionario : MonoBehaviour
             if(letra.Equals(palabraActual.Substring(0, 1).ToUpper()))
             {
                 palabraActual = palabraActual.Substring(1);
+                MostrarPalabra();
                 if(palabraActual.Length < 1)
                 {
                     PalabraF();
@@ -47,7 +49,8 @@ public class Diccionario : MonoBehaviour
             }
                 
         }
-        textoUi.text = palabraActual;
+
+       
 
         if (estado==Estado.juego)
         {
@@ -117,6 +120,11 @@ public class Diccionario : MonoBehaviour
     public void Ganador()
     {
         pFinal = puntaje - error;
+    }
+
+    public void MostrarPalabra()
+    {
+        textoUi.text = palabraActual;
     }
 }
 
