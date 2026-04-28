@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Photon/PhotonChat/Demos/Demo Chat/Chat-Scene.unity
     guid: 34000188cb69376469c1894be10c5bc2
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: cdd6d91226c2a1c468eee6fc2e8820aa
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 404cc2398e2167d4298df27e8d4f7634
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
