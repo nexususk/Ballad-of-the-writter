@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +20,7 @@ public class GameManager : MonoBehaviour
     public ParticleSystem particulasE;
     public Animator animatorE;
 
+    public Image[] corazones;
 
     [SerializeField]
     int victorias;
@@ -38,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -142,7 +146,10 @@ public class GameManager : MonoBehaviour
         particulasE.Play();
         animatorE.SetTrigger("Drawing");
         animatorP.SetTrigger("TookDamage");
+
         derrotas++;
+        ActualizarCorazones();
+
     }
 
     IEnumerator Valores()
@@ -167,6 +174,21 @@ public class GameManager : MonoBehaviour
     {
         chatGui.chatClient.PublishMessage("Meow", "2|" + cual);
         enviePalabraEscrita = true;
+    }
+
+    public void ActualizarCorazones()
+    {
+        for (int i = 0; i < corazones.Length; i++)
+        {
+            if (i < derrotas)
+            {
+                corazones[i].enabled = false; 
+            }
+            else
+            {
+                corazones[i].enabled = true; 
+            }
+        }
     }
 
     IEnumerator FlujoDeJuego()

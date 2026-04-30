@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Escena de juego.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Photon/PhotonChat/Demos/Demo Chat/Chat-Scene.unity
     guid: 34000188cb69376469c1894be10c5bc2
   - enabled: 1
