@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public Image[] corazones;
 
+   
+
     [SerializeField]
     int victorias;
 
