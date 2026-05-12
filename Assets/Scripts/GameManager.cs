@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour
     public ParticleSystem particulasE;
     public Animator animatorE;
 
+    public Animator[] animatorsE;
+    public Animator[] animatorsP;
+
+    public GameObject[] PJ1;
+    public GameObject[] PJ2;
+
     public Image[] corazones;
 
     [SerializeField]
@@ -131,6 +137,24 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+
+    public void ConfigEnemigo(int cual)
+    {
+        animatorE = animatorsE[cual];
+
+        PJ2[cual].SetActive(true); 
+
+
+    }
+
+    public void ConfigJugador(int cual)
+    {
+        animatorP = animatorsP[cual];
+
+        PJ1[cual].SetActive(true);
+    }
+
 
     public void Ganar()
     {
