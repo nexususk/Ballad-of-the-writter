@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
         {
             canvasChat.SetActive(false);
             canvasProp.SetActive(true);
+
             chatGui.chatClient.PublishMessage("Meow", "Hola");
         }
     }
@@ -147,7 +148,7 @@ public class GameManager : MonoBehaviour
     {
         print("Perdiste");
         particulasE.Play();
-        
+        FindAnyObjectByType<AudioManager>().Play("GlorpDmg");
         animatorE.SetTrigger("Drawing");
         animatorP.SetTrigger("TookDamage");
 
@@ -220,6 +221,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Soy el gandor");
             animatorP.SetTrigger("Victory");
+            FindAnyObjectByType<AudioManager>().Play("GlorpWin");
             animatorE.SetTrigger("Died");
             
         }
@@ -227,6 +229,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Perdi mi dignidad");
             animatorE.SetTrigger("Victory");
+            FindAnyObjectByType<AudioManager>().Play("GlorpLose");
             animatorP.SetTrigger("Died");
             
         }
