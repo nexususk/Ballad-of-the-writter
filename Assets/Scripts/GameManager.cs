@@ -72,11 +72,15 @@ public class GameManager : MonoBehaviour
             if (msj[0] == chatGui.UserName)
             {
                 AlistarJugador(1);
-                
+                ConfigJugador(PlayerPrefs.GetInt("PJ"));
+                Debug.LogWarning("Jugador configurado como " + PlayerPrefs.GetInt("PJ").ToString());
             }
             else
             {
                 AlistarJugador(2);
+                int grafico = int.Parse(msj[2]);
+                ConfigEnemigo(grafico);
+                Debug.LogWarning("Enemigo configurado como " + grafico.ToString());
             }
         }
     }
@@ -153,6 +157,8 @@ public class GameManager : MonoBehaviour
         animatorP = animatorsP[cual];
 
         PJ1[cual].SetActive(true);
+
+        PlayerPrefs.SetInt("PJ", cual);
     }
 
 

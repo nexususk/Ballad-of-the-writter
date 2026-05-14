@@ -437,7 +437,7 @@ namespace Photon.Chat.DemoChat
             // in this demo, we simply send a message into each channel. This is NOT a must have!
             foreach (string channel in channels)
             {
-                this.chatClient.PublishMessage(channel, "2"); // you don't HAVE to send a msg on join but you could.
+                this.chatClient.PublishMessage(channel, "2" + "|" + PlayerPrefs.GetInt("PJ", 0)); // you don't HAVE to send a msg on join but you could.
 
                 if (this.ChannelToggleToInstantiate != null)
                 {
