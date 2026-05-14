@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviour
         print("Ganaste!");
         particulasP.Play();
         animatorP.SetTrigger("Drawing");
+        
         animatorE.SetTrigger("TookDamage");
         victorias++;
     }
@@ -146,6 +147,7 @@ public class GameManager : MonoBehaviour
     {
         print("Perdiste");
         particulasE.Play();
+        
         animatorE.SetTrigger("Drawing");
         animatorP.SetTrigger("TookDamage");
 
@@ -219,12 +221,14 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Soy el gandor");
             animatorP.SetTrigger("Victory");
             animatorE.SetTrigger("Died");
+            
         }
         else
         {
             Debug.LogError("Perdi mi dignidad");
             animatorE.SetTrigger("Victory");
             animatorP.SetTrigger("Died");
+            
         }
     }
 }
